@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "184118748232",
+    "project_id": "buy-the-best-586d9",
+    "storage_bucket": "buy-the-best-586d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184118748232:android:4fd6e9134a71476f29247d",
+        "android_client_info": {
+          "package_name": "com.something.vendorapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "184118748232-2i04doh2fq12tih874k49i3pvq9dcqt9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8ma6-xTY3v9CQ23W5B5mUiDOa1aapen8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "184118748232-2i04doh2fq12tih874k49i3pvq9dcqt9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
