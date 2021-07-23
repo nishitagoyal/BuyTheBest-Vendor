@@ -13,18 +13,16 @@
         android:background="@color/darkGreen"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/recycler_popup"
+
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="top|end"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="10dp"
+            android:id="@+id/recycler_popup"
+            android:src="@drawable/ic_baseline_more_vert_24"
+            android:background="@null"
             android:padding="5dp"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:text="&#8942;"
-            android:textAppearance="?android:textAppearanceLarge" />
+            android:layout_gravity="top|end"
+            android:onClick="showPopup" />
 
         <TextView
             android:layout_width="match_parent"

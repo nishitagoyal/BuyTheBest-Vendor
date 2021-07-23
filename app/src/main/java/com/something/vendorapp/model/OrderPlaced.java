@@ -2,7 +2,7 @@ package com.something.vendorapp.model;
 
 public class OrderPlaced {
 
-    String order_address, order_items, order_key, order_status, order_date;
+    String order_address, order_items, order_key, order_status, order_date, all_order_key, user_key;
 
     public OrderPlaced() {}
 
@@ -12,6 +12,16 @@ public class OrderPlaced {
         this.order_key = order_key;
         this.order_status = order_status;
         this.order_date = order_date;
+    }
+
+    public OrderPlaced(String order_address, String order_items, String order_key, String order_status, String order_date, String all_order_key, String user_key) {
+        this.order_address = order_address;
+        this.order_items = order_items;
+        this.order_key = order_key;
+        this.order_status = order_status;
+        this.order_date = order_date;
+        this.all_order_key = all_order_key;
+        this.user_key = user_key;
     }
 
     public String getOrder_address() {
@@ -54,4 +64,19 @@ public class OrderPlaced {
         this.order_date = order_date;
     }
 
+    public String getAll_order_key() {
+        return all_order_key;
+    }
+
+    public void setAll_order_key(String all_order_key) {
+        this.all_order_key = all_order_key;
+    }
+
+    public String getUser_key() {
+        return user_key;
+    }
+
+    public void setUser_key(String user_key) {
+        this.user_key = user_key;
+    }
 }

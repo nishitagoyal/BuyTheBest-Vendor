@@ -11,41 +11,40 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.something.vendorapp.R;
-import com.something.vendorapp.fragment.TodayOrderFragment;
+import com.something.vendorapp.fragment.AllOrderFragment;
 import com.something.vendorapp.model.OrderPlaced;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class OrdersPlacedAdapter extends RecyclerView.Adapter<OrdersPlacedAdapter.OrderPlacedViewHolder>{
+public class AllOrdersPlacedAdapter extends RecyclerView.Adapter<AllOrdersPlacedAdapter.AllOrdersPlacedViewHolder> {
 
     Context mContext;
     List<OrderPlaced> orderPlacedList;
-    TodayOrderFragment todayOrderFragment;
+    AllOrderFragment allOrderFragment;
 
-    public OrdersPlacedAdapter(Context mContext, List<OrderPlaced> orderPlacedList, TodayOrderFragment todayOrderFragment) {
+    public AllOrdersPlacedAdapter(Context mContext, List<OrderPlaced> orderPlacedList, AllOrderFragment allOrderFragment) {
         this.mContext = mContext;
         this.orderPlacedList = orderPlacedList;
-        this.todayOrderFragment = todayOrderFragment;
+        this.allOrderFragment = allOrderFragment;
     }
 
     @NonNull
     @NotNull
     @Override
-    public OrderPlacedViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+    public AllOrdersPlacedViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View root;
         root = LayoutInflater.from(mContext).inflate(R.layout.order_list_item,parent,false);
-        OrdersPlacedAdapter.OrderPlacedViewHolder holder = new OrdersPlacedAdapter.OrderPlacedViewHolder(root);
+        AllOrdersPlacedAdapter.AllOrdersPlacedViewHolder holder = new AllOrdersPlacedAdapter.AllOrdersPlacedViewHolder(root);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull OrderPlacedViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull AllOrdersPlacedViewHolder holder, int position) {
 
         OrderPlaced orderPlacedItem = orderPlacedList.get(position);
         holder.orderAddress.setText(orderPlacedItem.getOrder_address());
@@ -71,15 +70,16 @@ public class OrdersPlacedAdapter extends RecyclerView.Adapter<OrdersPlacedAdapte
                         switch (item.getItemId()) {
                             case R.id.menu_pending:
                                 //handle menu1 click
-                                todayOrderFragment.setStatus(orderPlacedItem.getAll_order_key(),"PENDING",orderPlacedItem.getUser_key(),orderPlacedItem.getOrder_key());
+                                allOrderFragment.setStatus(orderPlacedItem.getAll_order_key(),"PENDING",orderPlacedItem.getUser_key(),orderPlacedItem.getOrder_key());
+
                                 break;
                             case R.id.menu_success:
                                 //handle menu2 click
-                                todayOrderFragment.setStatus(orderPlacedItem.getAll_order_key(),"DELIVERED",orderPlacedItem.getUser_key(),orderPlacedItem.getOrder_key());
+                                allOrderFragment.setStatus(orderPlacedItem.getAll_order_key(),"DELIVERED",orderPlacedItem.getUser_key(),orderPlacedItem.getOrder_key());
                                 break;
                             case R.id.menu_process:
                                 //handle menu2 click
-                                todayOrderFragment.setStatus(orderPlacedItem.getAll_order_key(),"IN PROCESS",orderPlacedItem.getUser_key(),orderPlacedItem.getOrder_key());
+                                allOrderFragment.setStatus(orderPlacedItem.getAll_order_key(),"IN PROCESS",orderPlacedItem.getUser_key(),orderPlacedItem.getOrder_key());
                                 break;
                         }
                         return false;
@@ -96,7 +96,7 @@ public class OrdersPlacedAdapter extends RecyclerView.Adapter<OrdersPlacedAdapte
         return orderPlacedList.size();
     }
 
-    public static class OrderPlacedViewHolder extends RecyclerView.ViewHolder {
+    public static class AllOrdersPlacedViewHolder extends RecyclerView.ViewHolder {
 
         private TextView orderAddress;
         private TextView orderItems;
@@ -104,7 +104,7 @@ public class OrdersPlacedAdapter extends RecyclerView.Adapter<OrdersPlacedAdapte
         private TextView orderDate;
         private ImageButton popupButton;
 
-        public OrderPlacedViewHolder(@NonNull View itemView) {
+        public AllOrdersPlacedViewHolder(@NonNull View itemView) {
             super(itemView);
             orderAddress = itemView.findViewById(R.id.order_recipient_textview);
             orderItems = itemView.findViewById(R.id.order_details_textview);
