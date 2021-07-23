@@ -45,40 +45,60 @@
             app:cardCornerRadius="8dp">
 
             <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/lato"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="Order Items: \n 1L Milk \n 1L Refined Oil \n 5pk. Biscuits"
-                android:layout_margin="10dp"
-                android:id="@+id/order_details_textview"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:text="Order Items: \n 1L Milk \n 1L Refined Oil \n 5pk. Biscuits"
+                    android:layout_margin="10dp"
+                    android:id="@+id/order_details_textview"/>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/status_cardview"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:elevation="5dp"
-                    android:layout_margin="10dp">
-
+                    android:orientation="horizontal">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15sp"
-                        android:layout_margin="5dp"
+                        android:textSize="10sp"
+                        android:textColor="@color/green"
+                        android:layout_margin="10dp"
                         android:fontFamily="@font/lato"
-                        android:text="IN TRANSIT"
-                        android:id="@+id/status_name"/>
+                        android:layout_centerVertical="true"
+                        android:text="Ordered on: 22-Jul-2021"
+                        android:id="@+id/order_date"/>
 
-                </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/status_cardview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginVertical="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:elevation="5dp">
+
+                        <TextView
+                            android:id="@+id/status_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:fontFamily="@font/lato"
+                            android:text="IN TRANSIT"
+                            android:textSize="15sp" />
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </RelativeLayout>
+
 
             </LinearLayout>
 

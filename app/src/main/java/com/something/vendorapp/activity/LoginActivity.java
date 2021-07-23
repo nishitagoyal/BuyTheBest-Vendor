@@ -11,12 +11,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.something.vendorapp.R;
+import com.something.vendorapp.model.Shared;
 
 public class    LoginActivity extends AppCompatActivity {
 
     EditText usernameET, passwordET;
     Button loginButton;
     TextView registerTV, forgotPassTV;
+    Shared shared;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class    LoginActivity extends AppCompatActivity {
             String password = passwordET.getText().toString();
             if(username.equalsIgnoreCase("User1") && password.equalsIgnoreCase("User123"))
             {
+                shared.setFirstTimeLaunched(false);
                 Toast.makeText(getApplicationContext(),"Login Successful!", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
@@ -53,5 +56,6 @@ public class    LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.login_button);
         registerTV = findViewById(R.id.register_text);
         forgotPassTV = findViewById(R.id.forget_pass_et);
+        shared = new Shared(LoginActivity.this);
     }
 }
