@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_edit"
+        android:title="EDIT" />
+
+    <item
+        android:id="@+id/menu_in_stock"
+        android:title="IN STOCK" />
+
+    <item
+        android:id="@+id/menu_out_of_stock"
+        android:title="OUT OF STOCK" />
+
+
+
+
+</menu>

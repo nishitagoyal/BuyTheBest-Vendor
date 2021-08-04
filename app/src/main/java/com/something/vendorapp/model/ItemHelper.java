@@ -4,6 +4,8 @@ public class ItemHelper {
 
     String itemName, itemPrice, itemQty, itemImage, itemAvailability, itemCategory, itemKey;
 
+    public ItemHelper(){}
+
     public ItemHelper(String itemName, String itemPrice, String itemQty, String itemImage, String itemAvailability, String itemCategory, String itemKey) {
         this.itemName = itemName;
         this.itemPrice = itemPrice;

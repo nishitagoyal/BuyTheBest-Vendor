@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/dullWhite"
     tools:context=".activity.AddItemActivity">
 
     <LinearLayout
@@ -70,8 +71,47 @@
             android:layout_marginHorizontal="10dp"
             android:id="@+id/add_category_button"/>
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Categories Already Present"
+            android:textSize="18sp"
+            android:textColor="@color/darkGreen"
+            android:fontFamily="@font/comfortaa_bold"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/no_category_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Categories Present"
+                android:textSize="18sp"
+                android:visibility="gone"
+                android:layout_marginTop="40dp"
+                android:textColor="@color/darkGreen"
+                android:fontFamily="@font/lato"
+                android:textStyle="bold"
+                android:layout_centerInParent="true"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categories_name_rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="10dp"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:spanCount="3"/>
+
+        </RelativeLayout>
+
+
     </LinearLayout>
-
-
 
 </ScrollView>

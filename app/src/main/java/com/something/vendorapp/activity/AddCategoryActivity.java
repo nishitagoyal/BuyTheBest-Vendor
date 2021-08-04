@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -26,16 +29,23 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.something.vendorapp.R;
+import com.something.vendorapp.adapter.CategoriesAdapter;
+import com.something.vendorapp.adapter.CategoriesNameAdapter;
 import com.something.vendorapp.model.CategoryHelper;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class AddCategoryActivity extends AppCompatActivity {
 
@@ -47,10 +57,13 @@ public class AddCategoryActivity extends AppCompatActivity {
     Button addCategoryButton;
     ImageView categoryImage;
     FloatingActionButton selectImageFab;
+    List<CategoryHelper> categoriesList;
     Uri contentUri;
+    RecyclerView recyclerView;
     private ProgressDialog addCategoryDialog;
     String categoryName, categoryImageUri = "null";
     String categoryImageFileName = new String("null");
+    AppCompatTextView noCategoryText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +73,6 @@ public class AddCategoryActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle("Add Category");
         initView();
-
         //push category data to firebase
         addCategoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +93,7 @@ public class AddCategoryActivity extends AppCompatActivity {
             }
         });
 
+        populateList();
     }
 
     private void addCategoryToFirebase() {
@@ -170,6 +183,7 @@ public class AddCategoryActivity extends AppCompatActivity {
         addCategoryDialog.setTitle("Adding Category");
         addCategoryDialog.setCancelable(false);
         addCategoryDialog.setProgress(5);
+        categoriesList = new ArrayList<>();
         mStorage = FirebaseStorage.getInstance().getReference();
         rootnode = FirebaseDatabase.getInstance();
         reference = rootnode.getReference("categories");
@@ -177,6 +191,8 @@ public class AddCategoryActivity extends AppCompatActivity {
         addCategoryButton = findViewById(R.id.add_category_button);
         selectImageFab = findViewById(R.id.add_categoryImage_fab);
         categoryImage = findViewById(R.id.category_image);
+        recyclerView = findViewById(R.id.categories_name_rv);
+        noCategoryText = findViewById(R.id.no_category_text);
     }
 
     private void uploadImageToFirebase(String name, Uri contentUri) {
@@ -199,6 +215,29 @@ public class AddCategoryActivity extends AppCompatActivity {
                 addCategoryDialog.dismiss();
                 addCategoryButton.setEnabled(true);
                 Toast.makeText(AddCategoryActivity.this, "Failed to upload. Please try again later.", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void populateList() {
+        categoriesList.clear();
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds: snapshot.getChildren())
+                {
+                    CategoryHelper categories = ds.getValue(CategoryHelper.class);
+                    categoriesList.add(categories);
+                }
+
+                if(categoriesList.isEmpty())
+                    noCategoryText.setVisibility(View.VISIBLE);
+                recyclerView.setAdapter(new CategoriesNameAdapter(AddCategoryActivity.this,categoriesList));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }

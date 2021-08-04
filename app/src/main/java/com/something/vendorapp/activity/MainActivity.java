@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     ViewPager viewPager;
     ImageView logout_button;
     Shared shared;
-    FloatingActionButton addFAB, additemFAB, addCategoryFAB;
+    FloatingActionButton addFAB, additemFAB, addCategoryFAB, catalogueFAB;
     boolean isFABOpen = false;
 
     @Override
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         addFAB = findViewById(R.id.add_fab);
         additemFAB = findViewById(R.id.add_item_fab);
         addCategoryFAB = findViewById(R.id.add_category_fab);
+        catalogueFAB = findViewById(R.id.catalogue_fab);
         tabLayout.addTab(tabLayout.newTab().setText(getResources().getString(R.string.tab_text_1)));
         tabLayout.addTab(tabLayout.newTab().setText(getResources().getString(R.string.tab_text_2)));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -82,6 +83,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        catalogueFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CatagoriesActivity.class);
+                startActivity(intent);
+            }
+        });
+
         addCategoryFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,12 +103,14 @@ public class MainActivity extends AppCompatActivity {
         isFABOpen=true;
         additemFAB.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
         addCategoryFAB.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
+        catalogueFAB.animate().translationY(-getResources().getDimension(R.dimen.standard_155));
     }
 
     private void closeFABMenu(){
         isFABOpen=false;
         additemFAB.animate().translationY(0);
         addCategoryFAB.animate().translationY(0);
+        catalogueFAB.animate().translationY(0);
     }
 
 }
