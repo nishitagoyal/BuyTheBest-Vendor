@@ -17,6 +17,33 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"/>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:scaleType="fitXY"
+            android:layout_centerInParent="true"
+            android:id="@+id/edit_item_image"
+            android:src="@drawable/circle_image"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/edit_itemImage_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_item_image"
+            android:backgroundTint="@color/darkGreen"
+            android:layout_centerHorizontal="true"
+            app:tint="@color/white"
+            app:fabSize="mini"
+            android:src="@drawable/ic_baseline_add_24"/>
+
+    </RelativeLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/name_textInput"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

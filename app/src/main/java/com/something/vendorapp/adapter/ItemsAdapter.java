@@ -67,7 +67,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemsViewHol
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.menu_edit:
-                                itemActivity.editDetails(groceryItem.getItemKey(), groceryItem.getItemName(),groceryItem.getItemPrice(),groceryItem.getItemQty());
+                                itemActivity.editDetails(groceryItem.getItemKey(), groceryItem.getItemName(),groceryItem.getItemPrice(),groceryItem.getItemQty(),groceryItem.getItemImage());
                                 break;
                             case R.id.menu_out_of_stock:
                                 itemActivity.itemAvailabilityStatus(groceryItem.getItemKey(),"Out of Stock");
